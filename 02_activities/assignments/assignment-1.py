@@ -129,9 +129,7 @@ plt.tight_layout()
 plt.savefig('campaign_costs.png', dpi=300, bbox_inches='tight')
 plt.show()
 
-# ============================================================================
 # Example 5: Creating a basic plot with customization (teaching example)
-# ============================================================================
 
 # Simple example for beginners
 x = [1, 2, 3, 4, 5]
@@ -154,4 +152,186 @@ print("2. sales_line_chart.png")
 print("3. aspect_ratio_comparison.png")
 print("4. campaign_costs.png")
 print("5. simple_example.png")
+
+# Slide deck 02 - Matplotlib visualization examples
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Set random seed for reproducibility
+np.random.seed(613)
+
+# Generate sample data
+x = np.arange(50)
+y = np.random.randint(0, 100, 50)
+
+# Basic scatter plot
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.scatter(x, y)
+
+# Basic bar chart
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.bar(x, y)
+
+# Basic line plot
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.plot(x, y)
+
+# Histogram with labels
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.hist(y)
+ax.set_title('Total growth over time')
+ax.set_ylabel('Total growth')
+ax.set_xlabel('Years since start')
+
+# Define custom fonts
+font1 = {'family': 'sans-serif', 'color': 'blue', 'size': 20}
+font2 = {'family': 'monospace', 'color': 'green', 'size': 14}
+
+# Line plot with custom fonts
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.plot(x, y)
+ax.set_title('Total growth over time', fontdict=font1)
+ax.set_ylabel('Total growth', fontdict=font2)
+ax.set_xlabel('Years since start', fontdict=font2)
+
+# Line plot with left-aligned title
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.plot(x, y)
+ax.set_title('Total growth over time', fontdict=font1, loc='left')
+ax.set_ylabel('Total growth', fontdict=font2)
+ax.set_xlabel('Years since start', fontdict=font2)
+
+# Scatter plot with custom marker and color
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.scatter(x, y, marker='*', color='indigo')
+fig.show()
+
+# Line plot with markers and dashed line
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.plot(x, y, marker='*', color='indigo', linestyle='--', linewidth=2)
+fig.show()
+
+# Line plot with hex color code
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.plot(x, y, marker='*', color='#7425b9', linestyle='--', linewidth=2)
+fig.show()
+
+# Line plot with custom marker styling
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.plot(x, y, marker='*', markersize=12, color='#7425b9', 
+        linestyle='--', linewidth=2, 
+        markeredgecolor='#fa9359', markerfacecolor='#fa9359')
+
+# Add vertical gridlines
+ax.grid(axis='y')
+
+# Add styled gridlines
+ax.grid(axis='y', color='blue', linewidth=2, linestyle='-.')
+
+# Slide deck 05 - Advanced Matplotlib: Legends, Annotations, and Styling
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+import scipy
+import PIL
+import requests
+
+# Generate sample data
+np.random.seed(613)
+x = np.arange(50)
+y1 = np.random.randint(0, 100, 50)
+y2 = np.random.randint(0, 100, 50)
+
+# Basic multi-line plot
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.plot(x, y1)
+ax.plot(x, y2)
+fig.show()
+
+# Multi-line plot with basic legend
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.plot(x, y1, label="Person 1")
+ax.plot(x, y2, label="Person 2")
+ax.legend(loc='lower right')
+fig.show()
+
+# Legend with custom styling
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.plot(x, y1, label="Person 1")
+ax.plot(x, y2, label="Person 2")
+ax.legend(loc='lower right',
+          frameon=True,      # Add frame around legend
+          fontsize=12,       # Change font size
+          ncol=2,            # Two-column layout
+          shadow=True)       # Add shadow effect
+fig.show()
+
+# Legend positioned outside plot area
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.plot(x, y1, label="Person 1")
+ax.plot(x, y2, label="Person 2")
+ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
+fig.show()
+
+# Scatter plot with text annotation
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.scatter(x, y1, label="Person 1")
+ax.scatter(x, y2, label="Person 2")
+ax.legend(loc='lower right')
+ax.text(10, 95, "This value is important!")
+fig.show()
+
+# Text annotation with custom styling
+ax.text(10, 95, "This value is important!",
+        ha='center',       # Horizontal alignment
+        color='red',       # Font color
+        size=20)           # Font size
+fig.show()
+
+# Demonstrating different coordinate systems
+fig, ax = plt.subplots()
+ax.axis([0, 10, 0, 10])
+ax.text(1, 5, ". Data:(1, 5)", transform=ax.transData)
+ax.text(0.5, 0.1, ". Axes:(0.5, 0.1)", transform=ax.transAxes)
+ax.text(0.2, 0.2, ". Figure:(0.2, 0.2)", transform=fig.transFigure)
+
+# Corrected spacing in coordinate labels
+ax.text(1, 5, ". Data: (1, 5)", transform=ax.transData)
+ax.text(0.5, 0.1, ". Axes: (0.5, 0.1)", transform=ax.transAxes)
+ax.text(0.2, 0.2, ". Figure: (0.2, 0.2)", transform=fig.transFigure)
+
+# Annotation with arrow
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.scatter(x, y1, label="Person 1")
+ax.scatter(x, y2, label="Person 2")
+ax.legend(loc='lower right')
+ax.annotate('This is important!', xy=(10, 95), xytext=(20, 94),
+            arrowprops=dict(facecolor='black'))
+fig.show()
+
+# Annotation with custom arrow style
+ax.annotate('This is important!',
+            xy=(10, 95), xytext=(20, 94),
+            arrowprops=dict(arrowstyle="wedge", color="hotpink"))
+fig.show()
+
+# Hide axis ticks and labels
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.scatter(x, y1, label="Person 1")
+ax.scatter(x, y2, label="Person 2")
+ax.legend(loc='lower right')
+ax.yaxis.set_major_locator(plt.NullLocator())      # Remove y-axis ticks
+ax.xaxis.set_major_formatter(plt.NullFormatter())  # Remove x-axis labels
+
+# Limit number of x-axis ticks
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.scatter(x, y1, label="Person 1")
+ax.scatter(x, y2, label="Person 2")
+ax.legend(loc='lower right')
+ax.xaxis.set_major_locator(plt.MaxNLocator(3))  # Maximum 3 ticks
+
+# Set x-axis ticks at regular intervals
+fig, ax = plt.subplots(f
 
