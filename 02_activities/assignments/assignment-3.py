@@ -93,12 +93,10 @@ def main():
     print("EARLYON LANGUAGE ANALYSIS VISUALIZATION")
     print("="*60 + "\n")
     
-    # UPDATE THESE PATHS TO MATCH YOUR DIRECTORY
-    # ===========================================================================
+
     input_file = r"C:\Users\86185\Desktop\DSI\Assignments\visualization\02_activities\assignments\EarlyON_Child_and_Family_Centres_Locations_-_geometry_-_4326.csv"
     
     output_file = r"C:\Users\86185\Desktop\DSI\Assignments\visualization\02_activities\assignments\language_analysis.png"
-    # ===========================================================================
     
     # Load data
     print(f"Loading data from: {input_file}")
